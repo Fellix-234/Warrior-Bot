@@ -1,0 +1,106 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=WARRIOR%20BOT&fontSize=80&animation=fadeIn&fontAlignY=35&method=color&gradientColor=FF0000,000000" width="100%"/>
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=F70000&center=true&vCenter=true&width=435&lines=THE+ULTIMATE+WHATSAPP+BOT;MODULAR+%26+POWERFUL;EASY+DEPLOYMENT;MADE+WITH+LOVE+BY+USER" alt="Typing SVG" />
+
+<img src="./assets/alive.png" width="200" height="200" style="border-radius: 50%; box-shadow: 0 0 20px rgba(255,0,0,0.5);"/>
+
+**The Ultimate Multi-Device WhatsApp Bot**
+
+[![Stars](https://img.shields.io/github/stars/USER/WARRIOR-BOT?style=for-the-badge&color=gold)](https://github.com/USER/WARRIOR-BOT/stargazers)
+[![Forks](https://img.shields.io/github/forks/USER/WARRIOR-BOT?style=for-the-badge&color=blue)](https://github.com/USER/WARRIOR-BOT/network/members)
+[![Followers](https://img.shields.io/github/followers/USER?style=for-the-badge&color=green)](https://github.com/USER)
+[![Version](https://img.shields.io/badge/Version-1.2.0-red?style=for-the-badge)](https://github.com/USER/WARRIOR-BOT)
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 🎮 QUICK LINKS
+
+<p align="center">
+  <a href="https://github.com/USER/WARRIOR-BOT/fork">
+    <img src="https://img.shields.io/badge/FORK-REPO-blue?style=for-the-badge&logo=github" alt="Fork Repo" />
+  </a>
+  <a href="https://session-generator-link.com">
+    <img src="https://img.shields.io/badge/GET-SESSION-red?style=for-the-badge&logo=whatsapp" alt="Get Session" />
+  </a>
+  <a href="https://whatsapp.com/channel/example">
+    <img src="https://img.shields.io/badge/JOIN-CHANNEL-green?style=for-the-badge&logo=whatsapp" alt="Join Channel" />
+  </a>
+</p>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 📖 ABOUT
+**Warrior Bot** is a high-performance, modular WhatsApp assistant built on the latest `@whiskeysockets/baileys` library. Designed for efficiency and visual excellence, it brings a suite of powerful commands directly to your fingertips.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 📊 GITHUB STATS
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=USER&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" />
+  <br>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=USER&layout=compact&theme=radical&hide_border=true" alt="Top Languages" />
+</p>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 🚀 DEPLOYMENT
+
+#### ☁️ 1-Click Deploy
+| Platform | Button |
+| :--- | :--- |
+| **Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/USER/WARRIOR-BOT) |
+| **Railway** | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deploy?repo=https://github.com/USER/WARRIOR-BOT) |
+
+#### 🖥️ VPS / Panel Deployment
+```bash
+git clone https://github.com/USER/WARRIOR-BOT.git
+cd WARRIOR-BOT
+npm install
+node index.js
+```
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### ✨ FEATURES
+
+- 🔴 **Modular Plugin System**: Add/Remove features instantly.
+- 🟠 **Auto-Automation**: Status viewing, reactions, and more.
+- 🟡 **Media Downloader**: High-quality YouTube audio and video.
+- 🟢 **Interactive Games**: TTT, RPS, and fun group challenges.
+- 🔵 **Owner Protection**: Secure evaluation and broadcast tools.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 👥 DEVELOPERS
+
+<div align="center">
+  <table style="width:100%; border:none; border-collapse:collapse;">
+    <tr>
+      <td align="center" style="border:none;">
+        <img src="https://github.com/WarriorFelix.png" width="120" style="border-radius: 50%; border: 4px solid #ff0000; box-shadow: 0 0 15px rgba(255,0,0,0.5);"/>
+        <br>
+        <b>Warrior Felix</b>
+        <br>
+        <a href="https://wa.me/2547391914">
+          <img src="https://img.shields.io/badge/WhatsApp-CHAT-green?style=for-the-badge&logo=whatsapp" alt="Contact Felix" />
+        </a>
+      </td>
+      <td align="center" style="border:none;">
+        <img src="https://github.com/WonderingJew.png" width="120" style="border-radius: 50%; border: 4px solid #ff0000; box-shadow: 0 0 15px rgba(255,0,0,0.5);"/>
+        <br>
+        <b>Wondering Jew</b>
+        <br>
+        <a href="https://wa.me/254701881604">
+          <img src="https://img.shields.io/badge/WhatsApp-CHAT-green?style=for-the-badge&logo=whatsapp" alt="Contact Wondering Jew" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer&gradientColor=FF0000,000000" width="100%"/>
+
+</div>
