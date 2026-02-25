@@ -8,17 +8,17 @@
 
 **The Ultimate Multi-Device WhatsApp Bot**
 
-[![Stars](https://img.shields.io/github/stars/USER/WARRIOR-BOT?style=for-the-badge&color=gold)](https://github.com/USER/WARRIOR-BOT/stargazers)
-[![Forks](https://img.shields.io/github/forks/USER/WARRIOR-BOT?style=for-the-badge&color=blue)](https://github.com/USER/WARRIOR-BOT/network/members)
-[![Followers](https://img.shields.io/github/followers/USER?style=for-the-badge&color=green)](https://github.com/USER)
-[![Version](https://img.shields.io/badge/Version-1.2.0-red?style=for-the-badge)](https://github.com/USER/WARRIOR-BOT)
+[![Stars](https://img.shields.io/github/stars/Fellix-234/Warrior-Bot?style=for-the-badge&color=gold)](https://github.com/Fellix-234/Warrior-Bot/stargazers)
+[![Forks](https://img.shields.io/github/forks/Fellix-234/Warrior-Bot?style=for-the-badge&color=blue)](https://github.com/Fellix-234/Warrior-Bot/network/members)
+[![Followers](https://img.shields.io/github/followers/Fellix-234?style=for-the-badge&color=green)](https://github.com/Fellix-234)
+[![Version](https://img.shields.io/badge/Version-1.2.0-red?style=for-the-badge)](https://github.com/Fellix-234/Warrior-Bot)
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
 
 ### 🎮 QUICK LINKS
 
 <p align="center">
-  <a href="https://github.com/USER/WARRIOR-BOT/fork">
+  <a href="https://github.com/Fellix-234/Warrior-Bot/fork">
     <img src="https://img.shields.io/badge/FORK-REPO-blue?style=for-the-badge&logo=github" alt="Fork Repo" />
   </a>
   <a href="https://session-generator-link.com">
@@ -39,9 +39,9 @@
 ### 📊 GITHUB STATS
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=USER&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Fellix-234&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" />
   <br>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=USER&layout=compact&theme=radical&hide_border=true" alt="Top Languages" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Fellix-234&layout=compact&theme=radical&hide_border=true" alt="Top Languages" />
 </p>
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
@@ -51,12 +51,12 @@
 #### ☁️ 1-Click Deploy
 | Platform | Button |
 | :--- | :--- |
-| **Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/USER/WARRIOR-BOT) |
-| **Railway** | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deploy?repo=https://github.com/USER/WARRIOR-BOT) |
+| **Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Fellix-234/Warrior-Bot) |
+| **Railway** | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deploy?repo=https://github.com/Fellix-234/Warrior-Bot) |
 
 #### 🖥️ VPS / Panel Deployment
 ```bash
-git clone https://github.com/USER/WARRIOR-BOT.git
+git clone https://github.com/Fellix-234/Warrior-Bot.git
 cd WARRIOR-BOT
 npm install
 node index.js
