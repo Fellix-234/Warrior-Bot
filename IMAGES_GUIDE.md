@@ -6,57 +6,22 @@ This guide explains the image assets used by Warrior Bot and how to customize th
 
 The bot uses rotating images for various commands. Place all images in the `./assets/` folder.
 
-### 🟢 Alive Command Images
-- `alive.png` *(required - default image)*
-- `alive2.png` *(optional)*
-- `alive3.png` *(optional)*
-- `alive4.png` *(optional)*
-- `alive5.png` *(optional)*
+### ✅ Core Images (Currently Used)
 
-**Used by:** `.alive` command  
-**Recommended Size:** 512x512px or 1024x1024px  
+- `alive.png` *(required)*
+- `menu.png` *(required)*
+- `dashboard.png` *(required)*
+
+**Used by:** `.alive`, `.menu`, `.about`, `.repo`, `.channel`, and the startup image  
+**Recommended Size:** 512x512px to 1080x1080px  
 **Format:** PNG, JPG, or WebP
 
----
-
-### 📋 Menu Command Images
-- `menu.png` *(required - default image)*
-- `menu2.png` *(optional)*
-- `menu3.png` *(optional)*
-- `menu4.png` *(optional)*
-- `menu5.png` *(optional)*
-
-**Used by:** `.menu` command  
-**Recommended Size:** 1080x1080px  
-**Format:** PNG, JPG, or WebP
-
----
-
-### 📚 Repo Command Images
-- `repo.png` *(required - default image)*
-- `repo2.png` *(optional)*
-- `repo3.png` *(optional)*
-- `repo4.png` *(optional)*
-- `repo5.png` *(optional)*
-
-**Used by:** `.repo` command  
-**Recommended Size:** 512x512px or 1024x1024px  
-**Format:** PNG, JPG, or WebP
-
----
-
-### ℹ️ About Command Images
-- `about.png` *(required - default image)*
-- `about2.png` *(optional)*
-- `about3.png` *(optional)*
-
-**Used by:** `.about` command  
-**Recommended Size:** 1080x1080px  
-**Format:** PNG, JPG, or WebP
+All image arrays currently rotate only between these three files. If you add more images, update the arrays in the relevant plugin files.
 
 ---
 
 ### 🎬 Video Note (Optional)
+
 - `alive_note.mp4` *(optional)*
 
 **Used by:** `.alive` command when `ENABLE_VIDEO_NOTE=true`  
@@ -66,6 +31,7 @@ The bot uses rotating images for various commands. Place all images in the `./as
 ---
 
 ### 🌐 Dashboard/Web UI
+
 - `dashboard.png` *(used in web interface)*
 
 **Used by:** Web pairing UI at `http://localhost:3000`  
@@ -81,29 +47,28 @@ The bot uses rotating images for various commands. Place all images in the `./as
 3. **Add to Assets Folder:** Place images in `./assets/` directory
 4. **Update Plugin File:** Edit the plugin file to include new images in the array
 
-### Example: Adding a 6th alive image
+### Example: Adding a 4th alive image
 
-1. Save your image as `./assets/alive6.png`
+1. Save your image as `./assets/alive2.png`
 2. Open `./plugins/alive.js`
 3. Find the `aliveImages` array:
+
    ```javascript
    const aliveImages = [
-       './assets/alive.png',
-       './assets/alive2.png',
-       './assets/alive3.png',
-       './assets/alive4.png',
-       './assets/alive5.png'
+      './assets/alive.png',
+      './assets/menu.png',
+      './assets/dashboard.png'
    ];
    ```
+
 4. Add your new image:
+
    ```javascript
    const aliveImages = [
-       './assets/alive.png',
-       './assets/alive2.png',
-       './assets/alive3.png',
-       './assets/alive4.png',
-       './assets/alive5.png',
-       './assets/alive6.png'  // New image added!
+      './assets/alive.png',
+      './assets/menu.png',
+      './assets/dashboard.png',
+      './assets/alive2.png'  // New image added!
    ];
    ```
 
@@ -112,6 +77,7 @@ The bot uses rotating images for various commands. Place all images in the `./as
 ## 🎨 Design Tips
 
 ### Best Practices
+
 - **Consistent Style:** Keep images visually consistent across commands
 - **High Quality:** Use high-resolution images (at least 512x512px)
 - **Optimized Size:** Compress images to reduce file size (use TinyPNG, etc.)
@@ -119,6 +85,7 @@ The bot uses rotating images for various commands. Place all images in the `./as
 - **Brand Colors:** Use your bot's theme colors for consistency
 
 ### Recommended Tools
+
 - **Canva:** Easy online design tool
 - **Photopea:** Free Photoshop alternative
 - **GIMP:** Free open-source image editor
@@ -126,6 +93,7 @@ The bot uses rotating images for various commands. Place all images in the `./as
 - **Remove.bg:** Background removal
 
 ### Theme Ideas
+
 - Animated characters or mascots
 - Abstract art/patterns
 - Tech/cyberpunk aesthetics
@@ -136,17 +104,12 @@ The bot uses rotating images for various commands. Place all images in the `./as
 
 ## 📦 Current Assets Structure
 
-```
+```text
 assets/
 ├── alive.png          # Default alive image
 ├── dashboard.png      # Web UI image
 ├── menu.png           # Default menu image
-├── alive_note.mp4     # (Optional) Video note
-├── alive2.png         # (Optional) Additional images
-├── alive3.png
-├── menu2.png
-├── menu3.png
-└── ...
+└── alive_note.mp4     # (Optional) Video note
 ```
 
 ---
@@ -156,6 +119,7 @@ assets/
 If you're deploying for the first time:
 
 1. At minimum, ensure you have these files in `./assets/`:
+
    - `alive.png`
    - `menu.png`
    - `dashboard.png`
@@ -178,5 +142,6 @@ If you're deploying for the first time:
 ---
 
 **Need help?** Contact the developers:
+
 - Warrior Felix: [wa.me/2547391914](https://wa.me/2547391914)
 - GitHub: [Fellix-234/Warrior-Bot](https://github.com/Fellix-234/Warrior-Bot)

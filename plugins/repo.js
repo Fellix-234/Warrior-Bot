@@ -7,11 +7,9 @@ export default {
         
         // Rotating images for repo command
         const repoImages = [
-            './assets/repo.png',
-            './assets/repo2.png',
-            './assets/repo3.png',
-            './assets/repo4.png',
-            './assets/repo5.png'
+            './assets/menu.png',
+            './assets/dashboard.png',
+            './assets/alive.png'
         ];
         
         const imageUrl = repoImages[Math.floor(Math.random() * repoImages.length)];

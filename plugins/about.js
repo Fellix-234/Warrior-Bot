@@ -5,10 +5,9 @@ export default {
     async execute(sock, m, { botName }) {
         // Rotating images for about command
         const aboutImages = [
-            './assets/about.png',
-            './assets/about2.png',
-            './assets/about3.png',
-            './assets/menu.png'
+            './assets/menu.png',
+            './assets/dashboard.png',
+            './assets/alive.png'
         ];
         
         const imageUrl = aboutImages[Math.floor(Math.random() * aboutImages.length)];

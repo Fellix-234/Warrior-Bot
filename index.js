@@ -166,6 +166,8 @@ async function startBot() {
                         `⭐ Star: https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
                         `🍴 Fork: https://github.com/Fellix-234/Warrior-Bot/fork\n` +
                         `📚 Repo: https://github.com/Fellix-234/Warrior-Bot\n\n` +
+                        `📢 *𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️*\n` +
+                        `https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n\n` +
                         `— *Warrior Bot v${config.version}* 🛡️`
                 });
                 console.log('✅ Welcome message sent to your inbox!');

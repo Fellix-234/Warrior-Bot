@@ -12,7 +12,20 @@ export default {
             `║  *${botName.toUpperCase()} — COMMAND HUB*  ║\n` +
             `╚══════════════════════════╝\n\n` +
             `Prefix: *${prefix}*\n` +
-            `Type: *${prefix}menu* or *${prefix}help*\n\n`;
+            `Type: *${prefix}menu* or *${prefix}help*\n\n` +
+            `👨‍💻 *DEVELOPER INFO*\n` +
+            `━━━━━━━━━━━━━━━━━━\n` +
+            `👤 Warrior Felix\n` +
+            `🌐 Portfolio: elgringo.netlify.app\n` +
+            `📱 WhatsApp: wa.me/${process.env.OWNER_NUMBER?.split('@')[0] || '2547391914'}\n` +
+            `💼 Professional Bot Developer\n\n` +
+            `📢 *${channelName}*\n` +
+            `${channelUrl}\n\n` +
+            `⭐ *Support the Project:*\n` +
+            `Star: github.com/Fellix-234/Warrior-Bot/stargazers\n` +
+            `Fork: github.com/Fellix-234/Warrior-Bot/fork\n` +
+            `Repo: github.com/Fellix-234/Warrior-Bot\n\n` +
+            `──────────────\n\n`;
 
         const categories = {
             'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about', 'info', 'runtime', 'commands', 'support', 'channel'],
@@ -30,10 +43,8 @@ export default {
         // Rotating images for menu command
         const menuImages = [
             './assets/menu.png',
-            './assets/menu2.png',
-            './assets/menu3.png',
-            './assets/menu4.png',
-            './assets/menu5.png'
+            './assets/dashboard.png',
+            './assets/alive.png'
         ];
         
         const imageUrl = menuImages[Math.floor(Math.random() * menuImages.length)];
@@ -56,25 +67,11 @@ export default {
             menuText += `\n`;
         }
 
-        menuText += `──────────────\n`;
-        
         if (isOwner) {
             menuText += `🔑 *Owner Mode Active*\n\n`;
         }
-        
-        menuText += `�‍💻 *DEVELOPER INFO*\n` +
-            `━━━━━━━━━━━━━━━━━━\n` +
-            `👤 Warrior Felix\n` +
-            `🌐 Portfolio: elgringo.netlify.app\n` +
-            `📱 WhatsApp: wa.me/${process.env.OWNER_NUMBER?.split('@')[0] || '2547391914'}\n` +
-            `💼 Professional Bot Developer\n\n` +
-            `� *Join 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️:*\n` +
-            `${channelUrl}\n\n` +
-            `⭐ *Support the Project:*\n` +
-            `Star: github.com/Fellix-234/Warrior-Bot/stargazers\n` +
-            `Fork: github.com/Fellix-234/Warrior-Bot/fork\n` +
-            `Repo: github.com/Fellix-234/Warrior-Bot\n\n` +
-            `_Built with 💙 by Warrior Felix | v1.2.0_`;
+
+        menuText += `_Built with 💙 by Warrior Felix | v1.2.0_`;
 
         await sock.sendMessage(m.key.remoteJid, {
             image: { url: imageUrl },
