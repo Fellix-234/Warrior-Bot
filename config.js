@@ -7,7 +7,7 @@ export const config = {
     ownerNumber: process.env.OWNER_NUMBER || '1234567890@s.whatsapp.net',
     ownerName: process.env.OWNER_NAME || 'Antigravity',
     sessionId: process.env.SESSION_ID || 'warrior-session',
-    pairingNumber: process.env.PAIRING_NUMBER || null,
+    pairingNumber: process.env.PAIRING_NUMBER || '',
     port: process.env.PORT || 3000,
     mode: process.env.MODE || 'public',
     stickerPackName: process.env.STICKER_PACK_NAME || 'Warrior Bot',

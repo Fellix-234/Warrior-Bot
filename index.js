@@ -49,17 +49,24 @@ async function startBot() {
     const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');
     const { version, isLatest } = await fetchLatestBaileysVersion();
 
-    console.log(`🛡️ WarriorBot v${config.version} starting...`);
-    console.log(`Using Baileys v${version.join('.')}${isLatest ? ' (latest)' : ''}`);
+    console.log(`\n${'═'.repeat(60)}`);
+    console.log(`🛡️  WARRIOR BOT v${config.version} - THE ULTIMATE WHATSAPP BOT`);
+    console.log(`${'═'.repeat(60)}`);
+    console.log(`⚙️  Baileys v${version.join('.')}${isLatest ? ' (latest)' : ''}`);
     
     // Log deployment mode
     if (config.pairingNumber) {
-        console.log(`\n📱 AUTO-PAIRING MODE ENABLED`);
-        console.log(`📲 Will pair with: ${config.pairingNumber}\n`);
+        console.log(`\n✅ AUTO-PAIRING MODE ENABLED`);
+        console.log(`📱 Phone: ${config.pairingNumber}\n`);
     } else if (state.creds?.registered) {
         console.log(`\n✅ REGISTERED MODE - Using existing session\n`);
     } else {
-        console.log(`\n🎬 FRESH START - QR/Pairing will be generated\n`);
+        console.log(`\n⚡ FRESH START MODE`);
+        console.log(`\n📌 PLEASE ENTER YOUR WHATSAPP NUMBER:`);
+        console.log(`   Format: 254725391914 (country code + number, no +)`);
+        console.log(`   Example: 🇰🇪 Kenya = 254...`);
+        console.log(`   Example: 🇿🇦 South Africa = 27...\n`);
+        console.log(`🔗 Set PAIRING_NUMBER in your .env or config.js and restart\n`);
     }
 
     sock = makeWASocket({
@@ -121,10 +128,12 @@ async function startBot() {
                 startBot();
             }
         } else if (connection === 'open') {
-            console.log('Warrior Bot connected successfully!');
+            console.log(`\n${'═'.repeat(60)}`);
+            console.log(`✅ 🎉 WARRIOR BOT HAS STARTED SUCCESSFULLY! 🎉`);
+            console.log(`${'═'.repeat(60)}\n`);
             updateStatus({ connected: true, qr: null, pairingCode: null });
 
-            // Send session ID to owner inbox with security warning
+            // Send welcome message with session ID
             try {
                 const credsPath = './auth_info_baileys/creds.json';
                 const credsRaw = await fs.readFile(credsPath, 'utf-8');
@@ -132,20 +141,29 @@ async function startBot() {
                 const ownerJid = config.ownerNumber.includes('@') ? config.ownerNumber : `${config.ownerNumber}@s.whatsapp.net`;
 
                 await sock.sendMessage(ownerJid, {
-                    text: `🛡️ *WARRIOR BOT — SESSION CONNECTED*\n\n` +
-                        `📦 *SESSION ID (COPY THIS FIRST):*\n\`\`\`${sessionId}\`\`\`\n\n` +
-                        `⚠️ *DO NOT SHARE THIS SESSION*\n` +
+                    text: `🛡️ *WARRIOR BOT — SUCCESSFULLY STARTED* 🎉\n\n` +
                         `━━━━━━━━━━━━━━━━━━\n` +
-                        `🔒 Anyone with this ID can hijack your WhatsApp account.\n` +
-                        `🚫 Never send it to friends, groups, or public chats.\n` +
-                        `✅ Keep it private and store it securely.\n` +
+                        `✅ Your bot is LIVE and RUNNING!\n` +
                         `━━━━━━━━━━━━━━━━━━\n\n` +
-                        `Bot is live and running.\n` +
-                        `— *Warrior Bot v${config.version}*`
+                        `📦 *SESSION ID (BACKUP THIS):*\n\`\`\`${sessionId}\`\`\`\n\n` +
+                        `⚠️ *SECURITY WARNING*\n` +
+                        `━━━━━━━━━━━━━━━━━━\n` +
+                        `🔒 *DO NOT SHARE YOUR SESSION ID*\n` +
+                        `🚫 Anyone with this code can control your account\n` +
+                        `✅ Save it in a secure location\n` +
+                        `━━━━━━━━━━━━━━━━━━\n\n` +
+                        `🚀 *QUICK START*\n` +
+                        `• Type .menu to see all commands\n` +
+                        `• Type .help for more info\n\n` +
+                        `📱 *GITHUB*\n` +
+                        `⭐ Star: https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
+                        `🍴 Fork: https://github.com/Fellix-234/Warrior-Bot/fork\n` +
+                        `📚 Repo: https://github.com/Fellix-234/Warrior-Bot\n\n` +
+                        `— *Warrior Bot v${config.version}* 🛡️`
                 });
-                console.log('✅ Session ID sent to owner inbox.');
+                console.log('✅ Welcome message sent to your inbox!');
             } catch (err) {
-                console.error('Could not send session ID:', err.message);
+                console.error('Could not send welcome message:', err.message);
             }
         }
     });
