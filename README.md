@@ -21,8 +21,8 @@
   <a href="https://github.com/Fellix-234/Warrior-Bot/fork">
     <img src="https://img.shields.io/badge/FORK-REPO-blue?style=for-the-badge&logo=github" alt="Fork Repo" />
   </a>
-  <a href="http://localhost:3000">
-    <img src="https://img.shields.io/badge/LOCAL-WEB%20UI-red?style=for-the-badge&logo=web" alt="Local Web UI" />
+  <a href="https://warrior-bot-2.onrender.com/">
+    <img src="https://img.shields.io/badge/GET-SESSION-red?style=for-the-badge&logo=whatsapp" alt="Get Session" />
   </a>
   <a href="https://wa.me/2547391914">
     <img src="https://img.shields.io/badge/GET-SUPPORT-green?style=for-the-badge&logo=whatsapp" alt="Get Support" />
