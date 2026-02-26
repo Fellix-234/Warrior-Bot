@@ -31,7 +31,8 @@ export default {
             `⚡ *MODE:* Multi-Device\n` +
             `🔥 *PERFORMANCE:* Optimal\n\n` +
             `━━━━━━━━━━━━━━━━━━\n` +
-            `🔗 *Channel:* https://whatsapp.com/channel/your_channel_id\n` +
+            `�‍💻 *Dev:* Warrior Felix | elgringo.netlify.app\n` +
+            `�🔗 *Channel:* https://whatsapp.com/channel/your_channel_id\n` +
             `⭐ *Star:* https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
             `📚 *Repo:* https://github.com/Fellix-234/Warrior-Bot\n\n` +
             `_Your bot is running smoothly! 🎯_`;

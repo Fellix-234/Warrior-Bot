@@ -38,9 +38,12 @@ export default {
             `• Express.js Web Server\n` +
             `• Real-time Connection Handling\n\n` +
             `━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-            `👨‍💻 *DEVELOPERS*\n` +
-            `Warrior Felix & Team\n` +
-            `📱 Support: wa.me/2547391914\n\n` +
+            `👨‍💻 *DEVELOPER*\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `👤 Warrior Felix\n` +
+            `🌐 elgringo.netlify.app\n` +
+            `📱 wa.me/2547391914\n` +
+            `💼 Professional Bot Developer\n\n` +
             `━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
             `🌐 *GET INVOLVED*\n` +
             `⭐ Star: github.com/Fellix-234/Warrior-Bot/stargazers\n` +
