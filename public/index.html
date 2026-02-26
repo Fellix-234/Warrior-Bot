@@ -417,7 +417,7 @@
         <div id="pairing-panel" class="panel active">
             <input type="text" id="phone-field" placeholder="Phone Number (e.g. 234...)">
             <button class="main-btn" id="pair-btn" onclick="handlePairing()">
-                <span id="pair-label">PROCEED SECURELY</span>
+                <span id="pair-label">GENERATE PAIRING CODE</span>
                 <div id="pair-spinner" class="loader" style="display: none;"></div>
             </button>
 
@@ -488,6 +488,7 @@
             } else {
                 document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
                 document.getElementById('qr-panel').classList.add('active');
+                pollNow(); // immediately fetch latest QR when switching to QR tab
             }
         }
 
@@ -506,16 +507,19 @@
                     body: JSON.stringify({ phoneNumber: num })
                 });
                 const data = await res.json();
-                if (data.success) {
-                    showToast('SIGNAL SENT. AWAITING CODE...');
+                if (data.success && data.code) {
+                    // Show code IMMEDIATELY from API response
+                    pairResult.style.display = 'block';
+                    pairCode.innerText = data.code;
+                    showToast('CODE GENERATED! ENTER IN WHATSAPP');
+                } else if (data.success) {
+                    showToast('CODE REQUESTED. WAITING...');
                 } else {
-                    showToast(data.error || 'FAILED', '#ff0000');
-                    pairBtn.disabled = false;
-                    pairLabel.style.display = 'block';
-                    pairSpinner.style.display = 'none';
+                    showToast(data.error || 'FAILED — BOT NOT READY', '#ff0000');
                 }
             } catch (e) {
-                showToast('API ERROR', '#ff0000');
+                showToast('API ERROR — IS BOT RUNNING?', '#ff0000');
+            } finally {
                 pairBtn.disabled = false;
                 pairLabel.style.display = 'block';
                 pairSpinner.style.display = 'none';

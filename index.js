@@ -2,9 +2,7 @@ import {
     makeWASocket,
     useMultiFileAuthState,
     DisconnectReason,
-    fetchLatestBaileysVersion,
-    makeInMemoryStore,
-    jidDecode
+    fetchLatestBaileysVersion
 } from '@whiskeysockets/baileys';
 import { Boom } from '@hapi/boom';
 import pino from 'pino';
@@ -14,7 +12,6 @@ import { startServer, updateStatus, setPairingCallbacks } from './server.js';
 import config from './config.js';
 
 const logger = pino({ level: 'silent' });
-const store = makeInMemoryStore({ logger });
 
 async function startBot() {
     // Start the web server
@@ -29,18 +26,9 @@ async function startBot() {
     const sock = makeWASocket({
         version,
         logger,
-        printQRInTerminal: true,
         auth: state,
-        getMessage: async (key) => {
-            if (store) {
-                const msg = await store.loadMessage(key.remoteJid, key.id);
-                return msg?.message || undefined;
-            }
-            return { conversation: 'Warrior Bot' };
-        }
+        getMessage: async () => ({ conversation: 'Warrior Bot' })
     });
-
-    store.bind(sock.ev);
 
     // Register web-to-bot callbacks
     setPairingCallbacks({
