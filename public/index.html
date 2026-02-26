@@ -338,6 +338,31 @@
             background: rgba(255, 255, 255, 0.12);
         }
 
+        .countdown-bar-wrap {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            height: 4px;
+            margin-top: 18px;
+            overflow: hidden;
+        }
+
+        .countdown-bar {
+            height: 4px;
+            background: var(--primary);
+            border-radius: 20px;
+            width: 100%;
+            transition: width 1s linear;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-align: center;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
         .qr-stage {
             background: white;
             padding: 15px;
@@ -449,6 +474,10 @@
                 <div class="copy-chip" onclick="copyCode()">
                     <i class="far fa-copy"></i> COPY TO CLIPBOARD
                 </div>
+                <div class="countdown-bar-wrap">
+                    <div class="countdown-bar" id="countdown-bar"></div>
+                </div>
+                <div class="countdown-label" id="countdown-label">REFRESHES IN 30s</div>
             </div>
         </div>
 
@@ -492,6 +521,11 @@
         const statusText = document.getElementById('status-text');
         const toast = document.getElementById('toast');
         const onlineView = document.getElementById('online-view');
+        const countdownBar = document.getElementById('countdown-bar');
+        const countdownLabel = document.getElementById('countdown-label');
+
+        let countdownTimer = null;
+        let countdownSec = 30;
 
         const qr = new QRious({
             element: document.getElementById('qr-canvas'),
@@ -529,10 +563,10 @@
                 });
                 const data = await res.json();
                 if (data.success && data.code) {
-                    // Show code IMMEDIATELY from API response
                     pairResult.style.display = 'block';
                     pairCode.innerText = data.code;
                     showToast('CODE GENERATED! ENTER IN WHATSAPP');
+                    startCountdown(num); // start 30s auto-refresh
                 } else if (data.success) {
                     showToast('CODE REQUESTED. WAITING...');
                 } else {
@@ -544,6 +578,46 @@
                 pairBtn.disabled = false;
                 pairLabel.style.display = 'block';
                 pairSpinner.style.display = 'none';
+            }
+        }
+
+        function startCountdown(num) {
+            stopCountdown();
+            countdownSec = 30;
+            countdownBar.style.width = '100%';
+            countdownLabel.innerText = 'REFRESHES IN 30s';
+
+            countdownTimer = setInterval(async () => {
+                countdownSec--;
+                const pct = (countdownSec / 30) * 100;
+                countdownBar.style.width = pct + '%';
+                countdownLabel.innerText = `REFRESHES IN ${countdownSec}s`;
+
+                if (countdownSec <= 0) {
+                    stopCountdown();
+                    countdownLabel.innerText = 'REQUESTING NEW CODE...';
+                    // auto-request fresh code for same number
+                    try {
+                        const res = await fetch('/api/request-code', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ phoneNumber: num })
+                        });
+                        const data = await res.json();
+                        if (data.success && data.code) {
+                            pairCode.innerText = data.code;
+                            showToast('CODE REFRESHED!');
+                            startCountdown(num);
+                        }
+                    } catch (e) { /* silent */ }
+                }
+            }, 1000);
+        }
+
+        function stopCountdown() {
+            if (countdownTimer) {
+                clearInterval(countdownTimer);
+                countdownTimer = null;
             }
         }
 
