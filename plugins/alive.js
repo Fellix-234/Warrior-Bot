@@ -9,8 +9,17 @@ export default {
         const seconds = Math.floor(uptime % 60);
         const uptimeString = `${hours}h ${minutes}m ${seconds}s`;
         
+        // Rotating images for alive command
+        const aliveImages = [
+            './assets/alive.png',
+            './assets/alive2.png',
+            './assets/alive3.png',
+            './assets/alive4.png',
+            './assets/alive5.png'
+        ];
+        
         const videoNoteUrl = process.env.VIDEO_NOTE_URL || './assets/alive_note.mp4';
-        const imageUrl = './assets/alive.png';
+        const imageUrl = aliveImages[Math.floor(Math.random() * aliveImages.length)];
         const useVideoNote = process.env.ENABLE_VIDEO_NOTE === 'true';
 
         const text = `╔═══════════════════╗\n` +

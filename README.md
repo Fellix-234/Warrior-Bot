@@ -125,6 +125,28 @@ When enabled, `.alive` sends a circular video note (like Instagram stories) inst
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
 
+### 🎨 ROTATING PHOTOS FEATURE
+
+The bot now supports dynamic photo rotation for commands! Each time you use `.alive`, `.menu`, `.repo`, or `.about`, a different image is displayed.
+
+#### 📸 How to Add Custom Images:
+
+1. **Alive Command** - Add images to `./assets/` folder:
+   - `alive.png`, `alive2.png`, `alive3.png`, `alive4.png`, `alive5.png`
+
+2. **Menu Command** - Add images:
+   - `menu.png`, `menu2.png`, `menu3.png`, `menu4.png`, `menu5.png`
+
+3. **Repo Command** - Add images:
+   - `repo.png`, `repo2.png`, `repo3.png`, `repo4.png`, `repo5.png`
+
+4. **About Command** - Add images:
+   - `about.png`, `about2.png`, `about3.png`
+
+**Note:** You can add as many images as you want! Just name them sequentially (e.g., `alive6.png`, `alive7.png`) and update the arrays in the plugin files. The bot randomly selects one image each time the command is used.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
 ### 👥 DEVELOPERS
 
 <div align="center">

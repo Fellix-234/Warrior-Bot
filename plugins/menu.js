@@ -26,7 +26,16 @@ export default {
             'Greetings': ['hi', 'hello']
         };
 
-        const imageUrl = './assets/menu.png';
+        // Rotating images for menu command
+        const menuImages = [
+            './assets/menu.png',
+            './assets/menu2.png',
+            './assets/menu3.png',
+            './assets/menu4.png',
+            './assets/menu5.png'
+        ];
+        
+        const imageUrl = menuImages[Math.floor(Math.random() * menuImages.length)];
 
         for (const [category, cmds] of Object.entries(categories)) {
             // Hide owner commands from non-owners

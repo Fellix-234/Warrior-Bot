@@ -3,7 +3,15 @@ export default {
     description: 'Learn more about Warrior Bot',
     category: 'General',
     async execute(sock, m, { botName }) {
-        const imageUrl = './assets/menu.png';
+        // Rotating images for about command
+        const aboutImages = [
+            './assets/about.png',
+            './assets/about2.png',
+            './assets/about3.png',
+            './assets/menu.png'
+        ];
+        
+        const imageUrl = aboutImages[Math.floor(Math.random() * aboutImages.length)];
         
         const text = `╔═══════════════════════════╗\n` +
             `║  🛡️ *ABOUT ${botName.toUpperCase()}*  ║\n` +

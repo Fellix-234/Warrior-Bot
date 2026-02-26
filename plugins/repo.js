@@ -4,7 +4,17 @@ export default {
     category: 'General',
     async execute(sock, m, { botName }) {
         const repoUrl = 'https://github.com/Fellix-234/Warrior-Bot';
-        const imageUrl = './assets/alive.png';
+        
+        // Rotating images for repo command
+        const repoImages = [
+            './assets/repo.png',
+            './assets/repo2.png',
+            './assets/repo3.png',
+            './assets/repo4.png',
+            './assets/repo5.png'
+        ];
+        
+        const imageUrl = repoImages[Math.floor(Math.random() * repoImages.length)];
 
         const text = `╔══════════════════╗\n` +
             `║  📚 *REPOSITORY*  ║\n` +
