@@ -10,7 +10,7 @@ import { Boom } from '@hapi/boom';
 import pino from 'pino';
 import fs from 'fs-extra';
 import { handleMessage } from './lib/commandHandler.js';
-import { startServer } from './server.js';
+import { startServer, updateStatus } from './server.js';
 import config from './config.js';
 
 const logger = pino({ level: 'silent' });
@@ -42,23 +42,40 @@ async function startBot() {
 
     store.bind(sock.ev);
 
-    sock.ev.on('connection.update', (update) => {
+    sock.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect, qr } = update;
 
         if (qr) {
             console.log('QR Code generated. Scan it with your WhatsApp!');
+            updateStatus({ qr, connected: false, pairingCode: null });
         }
 
         if (connection === 'close') {
             const shouldReconnect = (lastDisconnect.error instanceof Boom)?.output?.statusCode !== DisconnectReason.loggedOut;
             console.log('Connection closed due to ', lastDisconnect.error, ', reconnecting ', shouldReconnect);
+            updateStatus({ connected: false, qr: null, pairingCode: null });
             if (shouldReconnect) {
                 startBot();
             }
         } else if (connection === 'open') {
             console.log('Warrior Bot connected successfully!');
+            updateStatus({ connected: true, qr: null, pairingCode: null });
         }
     });
+
+    // Request Pairing Code if Number is provided and not registered
+    if (!sock.authState.creds.registered && config.ownerNumber) {
+        const phoneNumber = config.ownerNumber.replace(/[^0-9]/g, '');
+        if (phoneNumber.length > 5) {
+            try {
+                const code = await sock.requestPairingCode(phoneNumber);
+                console.log(`🔗 Pairing Code: ${code}`);
+                updateStatus({ pairingCode: code, qr: null });
+            } catch (e) {
+                console.error('Error requesting pairing code:', e);
+            }
+        }
+    }
 
     sock.ev.on('creds.update', saveCreds);
 
