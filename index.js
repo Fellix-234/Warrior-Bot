@@ -10,7 +10,7 @@ import { Boom } from '@hapi/boom';
 import pino from 'pino';
 import fs from 'fs-extra';
 import { handleMessage } from './lib/commandHandler.js';
-import { startServer, updateStatus } from './server.js';
+import { startServer, updateStatus, setPairingCallbacks } from './server.js';
 import config from './config.js';
 
 const logger = pino({ level: 'silent' });
@@ -37,10 +37,22 @@ async function startBot() {
                 return msg?.message || undefined;
             }
             return { conversation: 'Warrior Bot' };
-        }
-    });
+        });
 
     store.bind(sock.ev);
+
+    // Register web-to-bot callbacks
+    setPairingCallbacks({
+        onPairingCodeRequest: async (phoneNumber) => {
+            const code = await sock.requestPairingCode(phoneNumber.replace(/[^0-9]/g, ''));
+            updateStatus({ pairingCode: code, qr: null });
+            return code;
+        },
+        onQRRequest: async () => {
+            // Baileys doesn't have a direct "regen QR" but clearing token/restarting or waiting works
+            updateStatus({ qr: null, pairingCode: null });
+        }
+    });
 
     sock.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect, qr } = update;
