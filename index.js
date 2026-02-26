@@ -139,9 +139,12 @@ async function startBot() {
                 const credsRaw = await fs.readFile(credsPath, 'utf-8');
                 const sessionId = Buffer.from(credsRaw).toString('base64');
                 const ownerJid = config.ownerNumber.includes('@') ? config.ownerNumber : `${config.ownerNumber}@s.whatsapp.net`;
+                
+                const welcomeImage = './assets/dashboard.png'; // or use menu.png
 
                 await sock.sendMessage(ownerJid, {
-                    text: `🛡️ *WARRIOR BOT — SUCCESSFULLY STARTED* 🎉\n\n` +
+                    image: { url: welcomeImage },
+                    caption: `🛡️ *WARRIOR BOT — SUCCESSFULLY STARTED* 🎉\n\n` +
                         `━━━━━━━━━━━━━━━━━━\n` +
                         `✅ Your bot is LIVE and RUNNING!\n` +
                         `━━━━━━━━━━━━━━━━━━\n\n` +
@@ -154,7 +157,11 @@ async function startBot() {
                         `━━━━━━━━━━━━━━━━━━\n\n` +
                         `🚀 *QUICK START*\n` +
                         `• Type .menu to see all commands\n` +
-                        `• Type .help for more info\n\n` +
+                        `• Type .help for more info\n` +
+                        `• Type .about to learn more\n\n` +
+                        `👨‍💻 *DEVELOPER*\n` +
+                        `• Portfolio: https://elgringo.netlify.app\n` +
+                        `• WhatsApp: wa.me/${config.ownerNumber.split('@')[0]}\n\n` +
                         `📱 *GITHUB*\n` +
                         `⭐ Star: https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
                         `🍴 Fork: https://github.com/Fellix-234/Warrior-Bot/fork\n` +

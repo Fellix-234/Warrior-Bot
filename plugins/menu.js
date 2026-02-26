@@ -17,7 +17,7 @@ export default {
             'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about', 'info', 'runtime', 'commands', 'support'],
             'Download': ['song', 'video', 'play', 'yts', 'tiktok', 'fb', 'ig'],
             'Media': ['photocreate', 'sticker'],
-            'Games': ['tictactoe', 'rps'],
+            'Games': ['tictactoe', 'rps', 'dice', 'slots', 'quiz', 'flip', 'guess'],
             'Group': ['groupinfo', 'leave', 'tagall', 'kick', 'add', 'promote', 'demote'],
             'Utility': ['speed', 'uptime', 'system', 'calc', 'settings', 'weather', 'shorten', 'translate', 'style'],
             'Fun': ['meme', 'pickline', 'truth', 'dare', 'quote', 'joke', 'fact', 'trivia', 'style'],
@@ -61,12 +61,19 @@ export default {
             menuText += `🔑 *Owner Mode Active*\n\n`;
         }
         
-        menuText += `🔗 *View the Channel:*\n` +
+        menuText += `�‍💻 *DEVELOPER INFO*\n` +
+            `━━━━━━━━━━━━━━━━━━\n` +
+            `👤 Warrior Felix\n` +
+            `🌐 Portfolio: elgringo.netlify.app\n` +
+            `📱 WhatsApp: wa.me/${process.env.OWNER_NUMBER?.split('@')[0] || '2547391914'}\n` +
+            `💼 Professional Bot Developer\n\n` +
+            `🔗 *Join Our Channel:*\n` +
             `${channelUrl}\n\n` +
-            `⭐ *Star:* https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
-            `🍴 *Fork:* https://github.com/Fellix-234/Warrior-Bot/fork\n` +
-            `📚 *Repo:* https://github.com/Fellix-234/Warrior-Bot\n\n` +
-            `_Select a command and enjoy!_`;
+            `⭐ *Support the Project:*\n` +
+            `Star: github.com/Fellix-234/Warrior-Bot/stargazers\n` +
+            `Fork: github.com/Fellix-234/Warrior-Bot/fork\n` +
+            `Repo: github.com/Fellix-234/Warrior-Bot\n\n` +
+            `_Built with 💙 by Warrior Felix | v1.2.0_`;
 
         await sock.sendMessage(m.key.remoteJid, {
             image: { url: imageUrl },
