@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(express.json()); // For parsing application/json
 const PORT = config.port;
+let serverStarted = false;
 
 let pairingStatus = {
     connected: false,
@@ -18,10 +19,12 @@ let pairingStatus = {
 
 let onPairingCodeRequest = null;
 let onQRRequest = null;
+let onResetRequest = null;
 
 export function setPairingCallbacks(callbacks) {
     if (callbacks.onPairingCodeRequest) onPairingCodeRequest = callbacks.onPairingCodeRequest;
     if (callbacks.onQRRequest) onQRRequest = callbacks.onQRRequest;
+    if (callbacks.onResetRequest) onResetRequest = callbacks.onResetRequest;
 }
 
 export function updateStatus(status) {
@@ -29,6 +32,8 @@ export function updateStatus(status) {
 }
 
 export function startServer() {
+    if (serverStarted) return;
+    serverStarted = true;
     // Serve static files from the 'public' directory
     app.use(express.static(path.join(__dirname, 'public')));
 
@@ -59,6 +64,20 @@ export function startServer() {
         if (onQRRequest) {
             try {
                 await onQRRequest();
+                res.json({ success: true });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        } else {
+            res.status(503).json({ error: 'Bot is not ready to receive requests' });
+        }
+    });
+
+    // Endpoint to reset auth session and force new pairing
+    app.post('/api/reset-session', async (req, res) => {
+        if (onResetRequest) {
+            try {
+                await onResetRequest();
                 res.json({ success: true });
             } catch (error) {
                 res.status(500).json({ error: error.message });

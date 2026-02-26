@@ -466,6 +466,9 @@
                 <span id="pair-label">GENERATE PAIRING CODE</span>
                 <div id="pair-spinner" class="loader" style="display: none;"></div>
             </button>
+            <button class="main-btn" id="reset-btn" style="background: rgba(255,255,255,0.06); margin-top: 12px;" onclick="handleReset()">
+                <i class="fas fa-power-off"></i> RESET SESSION
+            </button>
 
             <div id="pairing-result" class="result-card">
                 <p style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Your Unique Link Code
@@ -578,6 +581,27 @@
                 pairBtn.disabled = false;
                 pairLabel.style.display = 'block';
                 pairSpinner.style.display = 'none';
+            }
+        }
+
+        async function handleReset() {
+            const ok = confirm('This will clear the saved session and require re-pairing. Continue?');
+            if (!ok) return;
+
+            try {
+                const res = await fetch('/api/reset-session', { method: 'POST' });
+                const data = await res.json();
+                if (data.success) {
+                    stopCountdown();
+                    pairResult.style.display = 'none';
+                    pairCode.innerText = '--------';
+                    showToast('SESSION RESET. WAIT FOR NEW QR/PAIRING');
+                    pollNow();
+                } else {
+                    showToast(data.error || 'RESET FAILED', '#ff0000');
+                }
+            } catch (e) {
+                showToast('API ERROR — IS BOT RUNNING?', '#ff0000');
             }
         }
 

@@ -12,6 +12,34 @@ import { startServer, updateStatus, setPairingCallbacks } from './server.js';
 import config from './config.js';
 
 const logger = pino({ level: 'silent' });
+let sock = null;
+let isRestarting = false;
+
+async function resetSession() {
+    if (isRestarting) return;
+    isRestarting = true;
+
+    try {
+        if (sock?.logout) {
+            await sock.logout();
+        }
+    } catch (err) {
+        console.error('Logout failed:', err.message);
+    }
+
+    try {
+        await fs.remove('auth_info_baileys');
+    } catch (err) {
+        console.error('Failed to clear auth:', err.message);
+    }
+
+    updateStatus({ connected: false, qr: null, pairingCode: null });
+
+    setTimeout(() => {
+        isRestarting = false;
+        startBot();
+    }, 1000);
+}
 
 async function startBot() {
     // Start the web server
@@ -23,7 +51,7 @@ async function startBot() {
     console.log(`🛡️ WarriorBot v${config.version} starting...`);
     console.log(`Using Baileys v${version.join('.')}${isLatest ? ' (latest)' : ''}`);
 
-    const sock = makeWASocket({
+    sock = makeWASocket({
         version,
         logger,
         auth: state,
@@ -40,6 +68,9 @@ async function startBot() {
         onQRRequest: async () => {
             // Baileys doesn't have a direct "regen QR" but clearing token/restarting or waiting works
             updateStatus({ qr: null, pairingCode: null });
+        },
+        onResetRequest: async () => {
+            await resetSession();
         }
     });
 
@@ -49,6 +80,18 @@ async function startBot() {
         if (qr) {
             console.log('QR Code generated. Scan it with your WhatsApp!');
             updateStatus({ qr, connected: false, pairingCode: null });
+        }
+
+        // Auto-pairing mode: if PAIRING_NUMBER is set and not registered yet
+        if (!state.creds?.registered && config.pairingNumber && !qr) {
+            try {
+                const code = await sock.requestPairingCode(config.pairingNumber.replace(/[^0-9]/g, ''));
+                console.log(`\n🔗 PAIRING CODE: ${code}`);
+                console.log(`Enter this code in WhatsApp: Linked Devices > Link a Device > Link with Phone Number\n`);
+                updateStatus({ pairingCode: code, qr: null, connected: false });
+            } catch (err) {
+                console.error('Failed to request pairing code:', err.message);
+            }
         }
 
         if (connection === 'close') {
@@ -71,14 +114,14 @@ async function startBot() {
 
                 await sock.sendMessage(ownerJid, {
                     text: `🛡️ *WARRIOR BOT — SESSION CONNECTED*\n\n` +
-                        `Your bot is now live and running!\n\n` +
-                        `📦 *Your Session ID:*\n\`\`\`${sessionId}\`\`\`\n\n` +
-                        `⚠️ *SECURITY WARNING*\n` +
+                        `📦 *SESSION ID (COPY THIS FIRST):*\n\`\`\`${sessionId}\`\`\`\n\n` +
+                        `⚠️ *DO NOT SHARE THIS SESSION*\n` +
                         `━━━━━━━━━━━━━━━━━━\n` +
-                        `🔴 *DO NOT share this Session ID with ANYONE.*\n` +
-                        `Anyone who has this ID can take full control of your WhatsApp account.\n` +
+                        `🔒 Anyone with this ID can hijack your WhatsApp account.\n` +
+                        `🚫 Never send it to friends, groups, or public chats.\n` +
+                        `✅ Keep it private and store it securely.\n` +
                         `━━━━━━━━━━━━━━━━━━\n\n` +
-                        `Keep it private. Store it securely.\n` +
+                        `Bot is live and running.\n` +
                         `— *Warrior Bot v${config.version}*`
                 });
                 console.log('✅ Session ID sent to owner inbox.');

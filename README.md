@@ -21,11 +21,11 @@
   <a href="https://github.com/Fellix-234/Warrior-Bot/fork">
     <img src="https://img.shields.io/badge/FORK-REPO-blue?style=for-the-badge&logo=github" alt="Fork Repo" />
   </a>
-  <a href="https://warrior-bot-2.onrender.com/">
-    <img src="https://img.shields.io/badge/GET-SESSION-red?style=for-the-badge&logo=whatsapp" alt="Get Session" />
+  <a href="http://localhost:3000">
+    <img src="https://img.shields.io/badge/LOCAL-WEB%20UI-red?style=for-the-badge&logo=web" alt="Local Web UI" />
   </a>
-  <a href="https://whatsapp.com/channel/example">
-    <img src="https://img.shields.io/badge/JOIN-CHANNEL-green?style=for-the-badge&logo=whatsapp" alt="Join Channel" />
+  <a href="https://wa.me/2547391914">
+    <img src="https://img.shields.io/badge/GET-SUPPORT-green?style=for-the-badge&logo=whatsapp" alt="Get Support" />
   </a>
 </p>
 
@@ -61,6 +61,25 @@ cd WARRIOR-BOT
 npm install
 node index.js
 ```
+
+#### 🌐 Accessing the Web UI
+After starting the bot, open your browser:
+- **Local:** `http://localhost:3000`
+- **VPS/Server:** `http://YOUR_SERVER_IP:3000`
+- **Cloud (Render/Railway):** Use the provided deployment URL
+
+The web UI allows you to:
+- Generate pairing codes
+- Scan QR codes
+- Check connection status
+- Reset session
+
+#### 🔗 Auto-Pairing Mode (For Cloud Deployment)
+If deploying to cloud platforms where you can't scan QR codes:
+1. Set `PAIRING_NUMBER` in your `.env` file (e.g., `PAIRING_NUMBER=254712345678`)
+2. Start the bot - it will display a pairing code in the logs
+3. Open WhatsApp → Linked Devices → Link a Device → Link with Phone Number
+4. Enter the code from the logs
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
 
