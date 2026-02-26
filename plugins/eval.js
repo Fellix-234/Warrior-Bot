@@ -1,6 +1,7 @@
 export default {
     name: 'eval',
     description: 'Evaluate JavaScript code (Owner only)',
+    category: 'Owner',
     async execute(sock, m, { args, isOwner }) {
         if (!isOwner) return await sock.sendMessage(m.key.remoteJid, { text: '❌ Access Denied: Owner only!' });
 

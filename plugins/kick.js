@@ -1,6 +1,7 @@
 export default {
     name: 'kick',
     description: 'Remove a member from the group',
+    category: 'Group',
     async execute(sock, m, { args, isOwner, prefix }) {
         if (!m.key.remoteJid.endsWith('@g.us')) {
             return await sock.sendMessage(m.key.remoteJid, { text: '❌ This command can only be used in groups.' });

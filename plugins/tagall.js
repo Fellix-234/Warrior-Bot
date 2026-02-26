@@ -1,6 +1,7 @@
 export default {
     name: 'tagall',
     description: 'Mention all members in the group',
+    category: 'Group',
     async execute(sock, m, { args, isOwner }) {
         if (!m.key.remoteJid.endsWith('@g.us')) {
             return await sock.sendMessage(m.key.remoteJid, { text: '❌ This command can only be used in groups.' });

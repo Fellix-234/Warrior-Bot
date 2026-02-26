@@ -14,7 +14,7 @@ export default {
             `Type: *${prefix}menu* or *${prefix}help*\n\n`;
 
         const categories = {
-            'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo'],
+            'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about'],
             'Download': ['song', 'video', 'play', 'yts', 'tiktok', 'fb', 'ig'],
             'Media': ['photocreate', 'sticker'],
             'Games': ['tictactoe', 'rps'],

@@ -1,6 +1,7 @@
 export default {
     name: 'broadcast',
     description: 'Send a message to all joined groups (Owner only)',
+    category: 'Owner',
     async execute(sock, m, { args, isOwner }) {
         if (!isOwner) return await sock.sendMessage(m.key.remoteJid, { text: '❌ Owner only command!' });
         if (args.length === 0) return await sock.sendMessage(m.key.remoteJid, { text: 'Please provide a message to broadcast.' });

@@ -1,6 +1,7 @@
 export default {
     name: 'add',
     description: 'Add a member to the group',
+    category: 'Group',
     async execute(sock, m, { args, isOwner, prefix }) {
         if (!m.key.remoteJid.endsWith('@g.us')) {
             return await sock.sendMessage(m.key.remoteJid, { text: '❌ This command can only be used in groups.' });
