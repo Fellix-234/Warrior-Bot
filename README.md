@@ -21,7 +21,7 @@
   <a href="https://github.com/Fellix-234/Warrior-Bot/fork">
     <img src="https://img.shields.io/badge/FORK-REPO-blue?style=for-the-badge&logo=github" alt="Fork Repo" />
   </a>
-  <a href="https://session-generator-link.com">
+  <a href="https://warrior-bot-2.onrender.com/">
     <img src="https://img.shields.io/badge/GET-SESSION-red?style=for-the-badge&logo=whatsapp" alt="Get Session" />
   </a>
   <a href="https://whatsapp.com/channel/example">
