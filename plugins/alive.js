@@ -1,13 +1,17 @@
 export default {
     name: 'alive',
     description: 'Check if the bot is active with detail',
+    category: 'General',
     async execute(sock, m, { botName }) {
         const uptime = process.uptime();
         const hours = Math.floor(uptime / 3600);
         const minutes = Math.floor((uptime % 3600) / 60);
         const seconds = Math.floor(uptime % 60);
         const uptimeString = `${hours}h ${minutes}m ${seconds}s`;
+        
+        const videoNoteUrl = process.env.VIDEO_NOTE_URL || './assets/alive_note.mp4';
         const imageUrl = './assets/alive.png';
+        const useVideoNote = process.env.ENABLE_VIDEO_NOTE === 'true';
 
         const text = `╔═══════════════════╗\n` +
             `║  🛡️ *${botName.toUpperCase()}*  ║\n` +
@@ -23,9 +27,30 @@ export default {
             `📚 *Repo:* https://github.com/Fellix-234/Warrior-Bot\n\n` +
             `_Your bot is running smoothly! 🎯_`;
 
-        await sock.sendMessage(m.key.remoteJid, {
-            image: { url: imageUrl },
-            caption: text
-        });
+        // Send video note if enabled, otherwise send image
+        if (useVideoNote) {
+            try {
+                // Send video note (circular video message)
+                await sock.sendMessage(m.key.remoteJid, {
+                    video: { url: videoNoteUrl },
+                    caption: text,
+                    ptv: true, // This makes it a video note (round video)
+                    gifPlayback: false
+                });
+            } catch (error) {
+                console.log('Video note failed, sending image instead:', error.message);
+                // Fallback to image if video note fails
+                await sock.sendMessage(m.key.remoteJid, {
+                    image: { url: imageUrl },
+                    caption: text
+                });
+            }
+        } else {
+            // Default: send image
+            await sock.sendMessage(m.key.remoteJid, {
+                image: { url: imageUrl },
+                caption: text
+            });
+        }
     }
 };

@@ -3,7 +3,8 @@ import { getPlugins } from '../lib/commandHandler.js';
 export default {
     name: 'menu',
     description: 'Show a visual list of commands',
-    async execute(sock, m, { botName, prefix }) {
+    category: 'General',
+    async execute(sock, m, { botName, prefix, isOwner, isGroup }) {
         const plugins = getPlugins();
         const channelUrl = 'https://whatsapp.com/channel/your_channel_id';
         let menuText = `╔══════════════════════════╗\n` +
@@ -28,7 +29,14 @@ export default {
         const imageUrl = './assets/menu.png';
 
         for (const [category, cmds] of Object.entries(categories)) {
-            menuText += `◆ *${category}*\n`;
+            // Hide owner commands from non-owners
+            if (category === 'Owner' && !isOwner) continue;
+            
+            // Hide group commands in DM and add group indicator
+            const categoryDisplay = category === 'Group' && !isGroup ? 
+                `${category} 👥 (Group Only)` : category;
+            
+            menuText += `◆ *${categoryDisplay}*\n`;
             cmds.forEach(cmdName => {
                 const plugin = plugins.find(p => p.name === cmdName);
                 if (plugin) {
@@ -38,8 +46,13 @@ export default {
             menuText += `\n`;
         }
 
-        menuText += `──────────────\n` +
-            `🔗 *View the Channel:*\n` +
+        menuText += `──────────────\n`;
+        
+        if (isOwner) {
+            menuText += `🔑 *Owner Mode Active*\n\n`;
+        }
+        
+        menuText += `🔗 *View the Channel:*\n` +
             `${channelUrl}\n\n` +
             `⭐ *Star:* https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
             `🍴 *Fork:* https://github.com/Fellix-234/Warrior-Bot/fork\n` +

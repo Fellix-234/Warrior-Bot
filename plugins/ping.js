@@ -1,6 +1,7 @@
 export default {
     name: 'ping',
     description: 'Check bot response time',
+    category: 'General',
     async execute(sock, m, args) {
         const start = Date.now();
         const sent = await sock.sendMessage(m.key.remoteJid, { text: '⚡ Pinging...' });

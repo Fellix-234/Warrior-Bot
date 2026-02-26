@@ -1,6 +1,7 @@
 export default {
     name: 'owner',
     description: 'Get owner details',
+    category: 'General',
     async execute(sock, m, { botName }) {
         const ownerName = process.env.OWNER_NAME || 'Warrior Felix';
         const ownerNum = process.env.OWNER_NUMBER?.split('@')[0] || '2547391914';

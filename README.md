@@ -90,6 +90,38 @@ If deploying to cloud platforms where you can't scan QR codes:
 - 🟡 **Media Downloader**: High-quality YouTube audio and video.
 - 🟢 **Interactive Games**: TTT, RPS, and fun group challenges.
 - 🔵 **Owner Protection**: Secure evaluation and broadcast tools.
+- 🟣 **Privacy Controls**: Command-level access restrictions for owners and groups.
+- 🔴 **Video Note Support**: Professional video notes for alive command (optional).
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 🔐 PRIVACY & ACCESS CONTROL
+
+Warrior Bot includes built-in privacy controls:
+
+- **Owner Commands** 🔑: Restricted to the bot owner only (eval, broadcast)
+- **Group Commands** 👥: Only work in group chats (kick, promote, tagall, etc.)
+- **Smart Menu**: Automatically hides restricted commands from unauthorized users
+
+Set your owner number in `.env`:
+```env
+OWNER_NUMBER=254712345678
+```
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 🎬 VIDEO NOTE FEATURE
+
+Enable professional video notes for the `.alive` command:
+
+1. Add a video file to `./assets/alive_note.mp4` (or use a URL)
+2. Configure in `.env`:
+```env
+ENABLE_VIDEO_NOTE=true
+VIDEO_NOTE_URL=./assets/alive_note.mp4
+```
+
+When enabled, `.alive` sends a circular video note (like Instagram stories) instead of a static image.
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
 

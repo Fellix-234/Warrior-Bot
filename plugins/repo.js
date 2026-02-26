@@ -1,6 +1,7 @@
 export default {
     name: 'repo',
     description: 'Get the bot repository link',
+    category: 'General',
     async execute(sock, m, { botName }) {
         const repoUrl = 'https://github.com/Fellix-234/Warrior-Bot';
         const imageUrl = './assets/alive.png';
