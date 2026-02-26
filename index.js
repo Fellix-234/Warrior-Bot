@@ -37,7 +37,8 @@ async function startBot() {
                 return msg?.message || undefined;
             }
             return { conversation: 'Warrior Bot' };
-        });
+        }
+    });
 
     store.bind(sock.ev);
 
@@ -74,20 +75,6 @@ async function startBot() {
             updateStatus({ connected: true, qr: null, pairingCode: null });
         }
     });
-
-    // Request Pairing Code if Number is provided and not registered
-    if (!sock.authState.creds.registered && config.ownerNumber) {
-        const phoneNumber = config.ownerNumber.replace(/[^0-9]/g, '');
-        if (phoneNumber.length > 5) {
-            try {
-                const code = await sock.requestPairingCode(phoneNumber);
-                console.log(`🔗 Pairing Code: ${code}`);
-                updateStatus({ pairingCode: code, qr: null });
-            } catch (e) {
-                console.error('Error requesting pairing code:', e);
-            }
-        }
-    }
 
     sock.ev.on('creds.update', saveCreds);
 

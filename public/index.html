@@ -4,56 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WarriorBot | Connection Hub</title>
+    <title>WARRIOR BOT | PRO CONNECTION HUB</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #ff0000;
-            --secondary: #000000;
-            --bg: #0a0a0a;
+            --primary-glow: rgba(255, 0, 0, 0.6);
+            --bg: #030303;
+            --card: rgba(15, 15, 15, 0.7);
             --text: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --accent: #ff4d4d;
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #ff3e3e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Outfit', sans-serif;
             background: var(--bg);
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
             color: var(--text);
-            margin: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
             overflow-x: hidden;
+            background: radial-gradient(circle at 50% -20%, #300000 0%, #030303 70%);
+        }
+
+        /* Animated Mesh Background Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(at 0% 0%, rgba(255, 0, 0, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 0, 0, 0.05) 0px, transparent 50%);
+            z-index: -1;
+            filter: blur(100px);
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            100% {
+                transform: scale(1.1) translate(20px, 20px);
+            }
         }
 
         .container {
-            text-align: center;
-            padding: 3rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 1);
-            max-width: 600px;
             width: 90%;
-            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 2;
-            margin-bottom: 2rem;
+            max-width: 500px;
+            background: var(--card);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            padding: 3rem 2.5rem;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.02);
+            text-align: center;
+            animation: AppEntry 1s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
-        @keyframes slideUp {
+        @keyframes AppEntry {
             from {
                 opacity: 0;
-                transform: translateY(50px) scale(0.95);
+                transform: translateY(30px) scale(0.98);
             }
 
             to {
@@ -62,91 +93,135 @@
             }
         }
 
+        .glow-hint {
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
         h1 {
-            font-size: 4rem;
-            margin-bottom: 0.2rem;
-            background: linear-gradient(45deg, #ff0000, #ff8080);
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff, #999);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
-            font-weight: 800;
-            letter-spacing: -2px;
+            margin-bottom: 5px;
         }
 
-        p.subtitle {
-            font-size: 1.1rem;
-            opacity: 0.6;
-            margin-bottom: 3rem;
-            font-weight: 300;
+        .status-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 35px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dim);
         }
 
-        .social-bar {
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .pulse-dot.online {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .social-row {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            animation: fadeIn 1.2s ease-out;
+            gap: 15px;
+            margin-bottom: 35px;
         }
 
-        .social-btn {
-            width: 50px;
-            height: 50px;
+        .social-icon {
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .social-btn:hover {
-            transform: translateY(-8px) rotate(8deg);
+        .social-icon:hover {
             background: var(--primary);
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .tabs {
-            display: flex;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 6px;
-            border-radius: 20px;
-            margin-bottom: 35px;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .tab {
-            flex: 1;
-            padding: 14px;
-            cursor: pointer;
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            font-weight: 600;
-            opacity: 0.5;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        .tab.active {
-            background: var(--primary);
-            color: white;
-            opacity: 1;
+            border-color: var(--primary);
+            transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
         }
 
-        .content-panel {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
+        .tab-switcher {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            border: 1px solid var(--border);
         }
 
-        .content-panel.active {
-            display: block;
+        .tab-btn {
+            padding: 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.4s;
+            color: var(--text-dim);
+            border: none;
+            background: none;
+        }
+
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .panel.active {
+            display: flex;
+            animation: fadeIn 0.5s ease;
         }
 
         @keyframes fadeIn {
@@ -161,431 +236,344 @@
 
         input {
             width: 100%;
-            padding: 20px;
             background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 18px;
             color: white;
             font-size: 1.1rem;
-            margin-bottom: 25px;
-            box-sizing: border-box;
-            transition: all 0.3s;
             text-align: center;
-            font-family: 'Fira Code', monospace;
+            margin-bottom: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            transition: 0.3s;
         }
 
         input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
         }
 
-        .btn {
+        .main-btn {
             width: 100%;
-            padding: 20px;
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--primary);
+            color: white;
             border: none;
-            border-radius: 20px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            gap: 10px;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
+        .main-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
         }
 
-        .btn-primary:hover {
-            transform: scale(1.02);
-            filter: brightness(1.2);
-            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.4);
+        .main-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            margin-top: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        #qr-canvas {
-            background: white;
-            padding: 20px;
-            border-radius: 30px;
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-            transition: transform 0.5s ease;
-        }
-
-        #qr-canvas:hover {
-            transform: scale(1.02);
-        }
-
-        .result-box {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(255, 0, 0, 0.03);
+        .result-card {
+            margin-top: 30px;
+            width: 100%;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
             border: 1px dashed rgba(255, 0, 0, 0.2);
-            border-radius: 25px;
+            border-radius: 24px;
             display: none;
-            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        @keyframes bounceIn {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        #pairing-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 10px;
+            margin: 15px 0;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
         }
 
-        #code-display {
-            font-family: 'Fira Code', monospace;
-            font-size: 3.5rem;
-            letter-spacing: 12px;
-            color: #ff4d4d;
-            font-weight: 700;
-            margin: 20px 0;
-            text-shadow: 0 0 30px rgba(255, 77, 77, 0.5);
-        }
-
-        .status-badge {
+        .copy-chip {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 12px 25px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
-            padding: 10px 20px;
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-top: 40px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .copy-chip:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .qr-stage {
+            background: white;
+            padding: 15px;
+            border-radius: 24px;
+            width: fit-content;
             display: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .pulse {
-            width: 12px;
-            height: 12px;
-            background: #10b981;
-            border-radius: 50%;
-            margin-right: 12px;
-            animation: pulse-ring 2s infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
+        .qr-placeholder {
+            width: 240px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid var(--border);
         }
 
         .loader {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid var(--primary);
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid white;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
             100% {
                 transform: rotate(360deg);
             }
         }
 
         footer {
-            margin-top: auto;
-            width: 100%;
-            padding: 40px 0;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
             text-align: center;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.4);
-            animation: fadeIn 2s ease-out;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            opacity: 0.4;
         }
 
         .toast {
             position: fixed;
             top: 30px;
-            right: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
             background: #10b981;
             color: white;
-            padding: 16px 32px;
-            border-radius: 20px;
+            padding: 15px 30px;
+            border-radius: 50px;
             font-weight: 700;
-            transform: translateX(200%);
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 10000;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            z-index: 9999;
+            transition: 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .toast.show {
-            transform: translateX(0);
+            transform: translateX(-50%) translateY(0);
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
 
 <body>
-    <div class="container" id="main-container">
-        <h1>WarriorBot</h1>
-        <p class="subtitle">Experience the peak of modular WhatsApp automation.</p>
 
-        <div class="social-bar">
-            <a href="https://wa.me/2349012345678" class="social-btn" title="WhatsApp Developer" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://github.com/Fellix-234/Warrior-Bot" class="social-btn" title="GitHub Repo" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://discord.gg/example" class="social-btn" title="Discord Community" target="_blank">
-                <i class="fab fa-discord"></i>
-            </a>
+    <div class="container">
+        <div class="glow-hint"></div>
+        <h1>WARRIOR</h1>
+        <div class="status-header">
+            <div id="status-dot" class="pulse-dot"></div>
+            <span id="status-text">DISCONNECTED</span>
         </div>
 
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('pairing')">
-                <i class="fas fa-key" style="margin-right: 8px;"></i> Pairing Code
-            </div>
-            <div class="tab" onclick="switchTab('qr')">
-                <i class="fas fa-qrcode" style="margin-right: 8px;"></i> QR Code
-            </div>
+        <div class="social-row">
+            <a href="https://wa.me/2547391914" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://github.com/Fellix-234/Warrior-Bot" class="social-icon" target="_blank"><i
+                    class="fab fa-github"></i></a>
+            <a href="#" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
 
-        <!-- Pairing Panel -->
-        <div id="pairing-panel" class="content-panel active">
-            <input type="text" id="phone-input" placeholder="Enter Phone (e.g. 234...)" autocomplete="off">
-            <button class="btn btn-primary" onclick="requestCode()">
-                <span id="btn-text">Generate Secure Code</span>
-                <div id="btn-loader" class="loader" style="display: none;"></div>
+        <div class="tab-switcher">
+            <button class="tab-btn active" onclick="switchTab('pairing')">PAIRING CODE</button>
+            <button class="tab-btn" onclick="switchTab('qr')">QR CODE</button>
+        </div>
+
+        <!-- PAIRING PANEL -->
+        <div id="pairing-panel" class="panel active">
+            <input type="text" id="phone-field" placeholder="Phone Number (e.g. 234...)">
+            <button class="main-btn" id="pair-btn" onclick="handlePairing()">
+                <span id="pair-label">PROCEED SECURELY</span>
+                <div id="pair-spinner" class="loader" style="display: none;"></div>
             </button>
-            <div id="code-result" class="result-box">
-                <p style="margin: 0; opacity: 0.5; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">
-                    Your Pairing Code:</p>
-                <div id="code-display">--------</div>
-                <button class="btn btn-secondary" onclick="copyCode()">
-                    <i class="far fa-copy"></i> Copy to Clipboard
-                </button>
-            </div>
-        </div>
 
-        <!-- QR Panel -->
-        <div id="qr-panel" class="content-panel">
-            <div id="qr-loading" style="padding: 60px;">
-                <div class="loader" style="width: 50px; height: 50px; margin: 0 auto; border-width: 5px;"></div>
-                <p style="margin-top: 30px; opacity: 0.5; letter-spacing: 1px;">INITIALIZING QR ENGINE...</p>
-            </div>
-            <div id="qr-display" style="display: none;">
-                <canvas id="qr-canvas"></canvas>
-                <p style="margin-top: 25px; opacity: 0.6; font-size: 0.9rem;">Open WhatsApp > Options > Linked Devices
+            <div id="pairing-result" class="result-card">
+                <p style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Your Unique Link Code
                 </p>
-                <button class="btn btn-secondary" onclick="requestQR()">
-                    <i class="fas fa-sync-alt"></i> Refresh QR
-                </button>
+                <div id="pairing-code">--------</div>
+                <div class="copy-chip" onclick="copyCode()">
+                    <i class="far fa-copy"></i> COPY TO CLIPBOARD
+                </div>
             </div>
         </div>
 
-        <!-- Online Status -->
-        <div id="online-status" class="status-badge">
-            <span class="pulse"></span> CONNECTION SECURED & ACTIVE
+        <!-- QR PANEL -->
+        <div id="qr-panel" class="panel">
+            <div id="qr-loading" class="qr-placeholder">
+                <i class="fas fa-qrcode fa-4x" style="margin-bottom: 20px;"></i>
+                <p>AWAITING SIGNAL...</p>
+            </div>
+            <div id="qr-stage" class="qr-stage">
+                <canvas id="qr-canvas"></canvas>
+            </div>
+            <button class="main-btn" style="background: rgba(255,255,255,0.05); margin-top: 30px;" onclick="pollNow()">
+                <i class="fas fa-sync-alt"></i> REFRESH ENGINE
+            </button>
+        </div>
+
+        <div id="online-view" style="display: none; margin-top: 40px;">
+            <i class="fas fa-shield-alt fa-3x" style="color: #00ff00; margin-bottom: 20px;"></i>
+            <h2 style="font-size: 1.5rem;">WARRIOR IS SHARP</h2>
+            <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 10px;">AUTHORIZED & ACTIVE</p>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://github.com/Fellix-234/Warrior-Bot">Source</a>
-                <a href="#">Support</a>
-                <a href="#">Privacy</a>
-            </div>
-            <p>&copy; 2026 WarriorBot Development Team. All Rights Reserved.</p>
-            <p style="font-size: 0.75rem; margin-top: 10px; opacity: 0.5;">Version 1.2.0-STABLE</p>
-        </div>
+        &copy; 2026 WARRIOR BOT • ELITE MODULAR SUITE
     </footer>
 
-    <div id="toast" class="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toast-msg">Action Successful!</span>
-    </div>
+    <div id="toast" class="toast">COPIED SUCCESSFULLY</div>
 
     <script>
-        const phoneInput = document.getElementById('phone-input');
-        const codeDisplay = document.getElementById('code-display');
-        const codeResult = document.getElementById('code-result');
-        const btnText = document.getElementById('btn-text');
-        const btnLoader = document.getElementById('btn-loader');
-        const qrCanvas = document.getElementById('qr-canvas');
-        const qrDisplay = document.getElementById('qr-display');
+        const phoneField = document.getElementById('phone-field');
+        const pairCode = document.getElementById('pairing-code');
+        const pairResult = document.getElementById('pairing-result');
+        const pairBtn = document.getElementById('pair-btn');
+        const pairLabel = document.getElementById('pair-label');
+        const pairSpinner = document.getElementById('pair-spinner');
+        const qrStage = document.getElementById('qr-stage');
         const qrLoading = document.getElementById('qr-loading');
-        const onlineStatus = document.getElementById('online-status');
+        const statusDot = document.getElementById('status-dot');
+        const statusText = document.getElementById('status-text');
         const toast = document.getElementById('toast');
-        const toastMsg = document.getElementById('toast-msg');
+        const onlineView = document.getElementById('online-view');
 
         const qr = new QRious({
-            element: qrCanvas,
-            size: 260,
-            level: 'H',
-            foreground: '#000000',
-            background: '#ffffff'
+            element: document.getElementById('qr-canvas'),
+            size: 240,
+            level: 'H'
         });
 
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
+        function switchTab(t) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
 
-            if (tab === 'pairing') {
-                document.querySelector('.tab:nth-child(1)').classList.add('active');
+            if (t === 'pairing') {
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
                 document.getElementById('pairing-panel').classList.add('active');
             } else {
-                document.querySelector('.tab:nth-child(2)').classList.add('active');
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
                 document.getElementById('qr-panel').classList.add('active');
             }
         }
 
-        async function requestCode() {
-            const phoneNumber = phoneInput.value.trim();
-            if (!phoneNumber) return showToast('Please enter a phone number', '#ff4d4d');
+        async function handlePairing() {
+            const num = phoneField.value.trim();
+            if (!num) return showToast('ENTER PHONE NUMBER', '#ff0000');
 
-            btnText.style.display = 'none';
-            btnLoader.style.display = 'block';
+            pairBtn.disabled = true;
+            pairLabel.style.display = 'none';
+            pairSpinner.style.display = 'block';
 
             try {
-                const response = await fetch('/api/request-code', {
+                const res = await fetch('/api/request-code', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phoneNumber })
+                    body: JSON.stringify({ phoneNumber: num })
                 });
-                const data = await response.json();
-
+                const data = await res.json();
                 if (data.success) {
-                    showToast('Pairing code requested!');
+                    showToast('SIGNAL SENT. AWAITING CODE...');
                 } else {
-                    showToast(data.error || 'Request failed', '#ff4d4d');
+                    showToast(data.error || 'FAILED', '#ff0000');
+                    pairBtn.disabled = false;
+                    pairLabel.style.display = 'block';
+                    pairSpinner.style.display = 'none';
                 }
-            } catch (error) {
-                showToast('Server error', '#ff4d4d');
-            } finally {
-                btnText.style.display = 'block';
-                btnLoader.style.display = 'none';
+            } catch (e) {
+                showToast('API ERROR', '#ff0000');
+                pairBtn.disabled = false;
+                pairLabel.style.display = 'block';
+                pairSpinner.style.display = 'none';
             }
         }
 
-        async function requestQR() {
-            try {
-                await fetch('/api/request-qr', { method: 'POST' });
-                showToast('Refreshing connection...');
-            } catch (error) { }
-        }
-
         function copyCode() {
-            const text = codeDisplay.innerText;
-            if (text === '--------') return;
-            navigator.clipboard.writeText(text);
-            showToast('Code copied to clipboard!');
+            const txt = pairCode.innerText;
+            if (txt === '--------') return;
+            navigator.clipboard.writeText(txt);
+            showToast('CODE COPIED TO CLIPBOARD');
         }
 
-        function showToast(msg, color = '#10b981') {
-            toastMsg.innerText = msg;
-            toast.style.backgroundColor = color;
+        function showToast(msg, bg = '#10b981') {
+            toast.innerText = msg;
+            toast.style.background = bg;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        async function updateStatus() {
+        async function pollNow() {
             try {
-                const response = await fetch('/api/status');
-                const status = await response.json();
+                const res = await fetch('/api/status');
+                const state = await res.json();
 
-                if (status.connected) {
-                    onlineStatus.style.display = 'inline-flex';
-                    document.getElementById('pairing-panel').style.opacity = '0.2';
-                    document.getElementById('pairing-panel').style.pointerEvents = 'none';
-                    document.getElementById('qr-panel').style.opacity = '0.2';
-                    document.getElementById('qr-panel').style.pointerEvents = 'none';
-                    document.querySelector('.tabs').style.opacity = '0.2';
-                    document.querySelector('.social-bar').style.opacity = '1';
+                if (state.connected) {
+                    statusDot.className = 'pulse-dot online';
+                    statusText.innerText = 'MASTER ACTIVE';
+                    onlineView.style.display = 'block';
+                    document.getElementById('pairing-panel').style.display = 'none';
+                    document.getElementById('qr-panel').style.display = 'none';
+                    document.querySelector('.tab-switcher').style.display = 'none';
                 } else {
-                    onlineStatus.style.display = 'none';
+                    statusDot.className = 'pulse-dot';
+                    statusText.innerText = 'DISCONNECTED';
+                    onlineView.style.display = 'none';
 
-                    if (status.pairingCode) {
-                        codeResult.style.display = 'block';
-                        codeDisplay.innerText = status.pairingCode;
+                    if (state.pairingCode) {
+                        pairResult.style.display = 'block';
+                        pairCode.innerText = state.pairingCode;
+                        pairBtn.disabled = false;
+                        pairLabel.style.display = 'block';
+                        pairSpinner.style.display = 'none';
                     }
 
-                    if (status.qr) {
+                    if (state.qr) {
                         qrLoading.style.display = 'none';
-                        qrDisplay.style.display = 'block';
-                        qr.value = status.qr;
+                        qrStage.style.display = 'block';
+                        qr.value = state.qr;
                     } else {
-                        qrLoading.style.display = 'block';
-                        qrDisplay.style.display = 'none';
+                        qrLoading.style.display = 'flex';
+                        qrStage.style.display = 'none';
                     }
                 }
             } catch (e) { }
         }
 
-        setInterval(updateStatus, 3000);
-        updateStatus();
-
-        // Aesthetic Intro Animation Optimization
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-        });
+        setInterval(pollNow, 4000);
+        pollNow();
     </script>
 </body>
 
