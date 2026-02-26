@@ -61,6 +61,30 @@ async function startBot() {
         } else if (connection === 'open') {
             console.log('Warrior Bot connected successfully!');
             updateStatus({ connected: true, qr: null, pairingCode: null });
+
+            // Send session ID to owner inbox with security warning
+            try {
+                const credsPath = './auth_info_baileys/creds.json';
+                const credsRaw = await fs.readFile(credsPath, 'utf-8');
+                const sessionId = Buffer.from(credsRaw).toString('base64');
+                const ownerJid = config.ownerNumber.includes('@') ? config.ownerNumber : `${config.ownerNumber}@s.whatsapp.net`;
+
+                await sock.sendMessage(ownerJid, {
+                    text: `🛡️ *WARRIOR BOT — SESSION CONNECTED*\n\n` +
+                        `Your bot is now live and running!\n\n` +
+                        `📦 *Your Session ID:*\n\`\`\`${sessionId}\`\`\`\n\n` +
+                        `⚠️ *SECURITY WARNING*\n` +
+                        `━━━━━━━━━━━━━━━━━━\n` +
+                        `🔴 *DO NOT share this Session ID with ANYONE.*\n` +
+                        `Anyone who has this ID can take full control of your WhatsApp account.\n` +
+                        `━━━━━━━━━━━━━━━━━━\n\n` +
+                        `Keep it private. Store it securely.\n` +
+                        `— *Warrior Bot v${config.version}*`
+                });
+                console.log('✅ Session ID sent to owner inbox.');
+            } catch (err) {
+                console.error('Could not send session ID:', err.message);
+            }
         }
     });
 

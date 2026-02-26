@@ -115,6 +115,22 @@
             margin-bottom: 5px;
         }
 
+        .public-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 200, 100, 0.1);
+            border: 1px solid rgba(0, 200, 100, 0.3);
+            color: #00c864;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
         .status-header {
             display: flex;
             align-items: center;
@@ -396,16 +412,21 @@
     <div class="container">
         <div class="glow-hint"></div>
         <h1>WARRIOR</h1>
+        <div class="public-badge"><i class="fas fa-globe"></i> PUBLIC BOT</div>
         <div class="status-header">
             <div id="status-dot" class="pulse-dot"></div>
             <span id="status-text">DISCONNECTED</span>
         </div>
 
         <div class="social-row">
-            <a href="https://wa.me/2547391914" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://github.com/Fellix-234/Warrior-Bot" class="social-icon" target="_blank"><i
-                    class="fab fa-github"></i></a>
-            <a href="#" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://wa.me/2547391914" class="social-icon" target="_blank" title="Contact on WhatsApp"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="https://github.com/Fellix-234/Warrior-Bot" class="social-icon" target="_blank"
+                title="View on GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Fellix-234/Warrior-Bot/fork" class="social-icon" target="_blank"
+                title="Fork Repository"><i class="fas fa-code-branch"></i></a>
+            <a href="https://github.com/Fellix-234/Warrior-Bot/stargazers" class="social-icon" target="_blank"
+                title="Star on GitHub"><i class="fas fa-star"></i></a>
         </div>
 
         <div class="tab-switcher">
