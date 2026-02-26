@@ -2,13 +2,24 @@ export default {
     name: 'repo',
     description: 'Get the bot repository link',
     async execute(sock, m, { botName }) {
-        const repoUrl = 'https://github.com/Antigravity/WarriorBot'; // Update with actual repo URL
-        const imageUrl = 'https://premium-wallpapers.com/wp-content/uploads/2023/11/futuristic-robot-warrior.jpg'; // Placeholder
+        const repoUrl = 'https://github.com/Fellix-234/Warrior-Bot';
+        const imageUrl = './assets/alive.png';
 
-        const text = `📂 *${botName} Repository*\n\n` +
-            `⭐ *Star the repo to support!*\n` +
-            `🔗 *Link:* ${repoUrl}\n\n` +
-            `_Join our community and contribute!_`;
+        const text = `╔══════════════════╗\n` +
+            `║  📚 *REPOSITORY*  ║\n` +
+            `╚══════════════════╝\n\n` +
+            `🛡️ *${botName}* - Open Source WhatsApp Bot\n\n` +
+            `━━━━━━━━━━━━━━━━━━\n` +
+            `📦 *Main Repo:*\n${repoUrl}\n\n` +
+            `⭐ *Star Us:*\nhttps://github.com/Fellix-234/Warrior-Bot/stargazers\n\n` +
+            `🍴 *Fork & Contribute:*\nhttps://github.com/Fellix-234/Warrior-Bot/fork\n` +
+            `━━━━━━━━━━━━━━━━━━\n\n` +
+            `💡 *Features:*\n` +
+            `• Multi-Device Support\n` +
+            `• Auto-Pairing Mode\n` +
+            `• Modular Plugin System\n` +
+            `• Modern UI & Commands\n\n` +
+            `_Star ⭐ the repo to support development!_`;
 
         await sock.sendMessage(m.key.remoteJid, {
             image: { url: imageUrl },
