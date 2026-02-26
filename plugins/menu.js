@@ -5,8 +5,12 @@ export default {
     description: 'Show a visual list of commands',
     async execute(sock, m, { botName, prefix }) {
         const plugins = getPlugins();
-        let menuText = `🌟 *${botName.toUpperCase()} MENU* 🌟\n\n` +
-            `Prefix: [ *${prefix}* ]\n\n`;
+        const channelUrl = 'https://whatsapp.com/channel/your_channel_id';
+        let menuText = `╔══════════════════════════╗\n` +
+            `║  *${botName.toUpperCase()} — COMMAND HUB*  ║\n` +
+            `╚══════════════════════════╝\n\n` +
+            `Prefix: *${prefix}*\n` +
+            `Type: *${prefix}menu* or *${prefix}help*\n\n`;
 
         const categories = {
             'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo'],
@@ -24,17 +28,23 @@ export default {
         const imageUrl = './assets/menu.png';
 
         for (const [category, cmds] of Object.entries(categories)) {
-            menuText += `┏━━━〔 *${category}* 〕━━━┓\n`;
+            menuText += `◆ *${category}*\n`;
             cmds.forEach(cmdName => {
                 const plugin = plugins.find(p => p.name === cmdName);
                 if (plugin) {
-                    menuText += `┃ 🔹 ${prefix}${plugin.name}\n`;
+                    menuText += `  • ${prefix}${plugin.name}\n`;
                 }
             });
-            menuText += `┗━━━━━━━━━━━━━━┛\n\n`;
+            menuText += `\n`;
         }
 
-        menuText += `_Select a command and enjoy!_`;
+        menuText += `──────────────\n` +
+            `🔗 *View the Channel:*\n` +
+            `${channelUrl}\n\n` +
+            `⭐ *Star:* https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
+            `🍴 *Fork:* https://github.com/Fellix-234/Warrior-Bot/fork\n` +
+            `📚 *Repo:* https://github.com/Fellix-234/Warrior-Bot\n\n` +
+            `_Select a command and enjoy!_`;
 
         await sock.sendMessage(m.key.remoteJid, {
             image: { url: imageUrl },
