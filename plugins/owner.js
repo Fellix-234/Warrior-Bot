@@ -18,7 +18,8 @@ export default {
             `custom features, or collaborations.\n` +
             `━━━━━━━━━━━━━━━━━━\n\n` +
             `⭐ *Star:* https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
-            `🔗 *Channel:* https://whatsapp.com/channel/your_channel_id\n\n` +
+            `� *Channel:* 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️\n` +
+            `🔗 https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n\n` +
             `_Powered by ${ownerName} 🔥_`;
 
         await sock.sendMessage(m.key.remoteJid, { text });

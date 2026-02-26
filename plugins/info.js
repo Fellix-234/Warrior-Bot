@@ -48,7 +48,10 @@ export default {
             `━━━━━━━━━━━━━━━━━━━━━\n\n` +
             `👨‍💻 *Developers*\n` +
             `Warrior Felix & Team\n\n` +
+            `� *𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️*\n` +
+            `🔗 https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n\n` +
             `📱 Support: wa.me/${process.env.OWNER_NUMBER?.split('@')[0] || '2547391914'}\n` +
+            `🌐 Portfolio: elgringo.netlify.app\n` +
             `⭐ GitHub: github.com/Fellix-234/Warrior-Bot\n\n` +
             `_Powered by cutting-edge technology! 🚀_`;
 

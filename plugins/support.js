@@ -39,6 +39,9 @@ export default {
             `   • Some commands need permissions\n` +
             `   • Owner/Group commands are restricted\n\n` +
             `━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            `📢 *Join 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️*\n` +
+            `🔗 https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n` +
+            `Get updates, tips & exclusive content!\n\n` +
             `⭐ *Support the Project*\n` +
             `Star our repository: github.com/Fellix-234/Warrior-Bot/stargazers\n\n` +
             `_We appreciate your support! 💙_`;

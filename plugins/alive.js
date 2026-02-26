@@ -32,7 +32,8 @@ export default {
             `🔥 *PERFORMANCE:* Optimal\n\n` +
             `━━━━━━━━━━━━━━━━━━\n` +
             `�‍💻 *Dev:* Warrior Felix | elgringo.netlify.app\n` +
-            `�🔗 *Channel:* https://whatsapp.com/channel/your_channel_id\n` +
+            `📢 *Channel:* 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️\n` +
+            `🔗 https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n` +
             `⭐ *Star:* https://github.com/Fellix-234/Warrior-Bot/stargazers\n` +
             `📚 *Repo:* https://github.com/Fellix-234/Warrior-Bot\n\n` +
             `_Your bot is running smoothly! 🎯_`;

@@ -32,6 +32,8 @@ export default {
             `• Modern UI & Commands\n\n` +
             `👨‍💻 *Developer:* Warrior Felix\n` +
             `🌐 Portfolio: elgringo.netlify.app\n\n` +
+            `📢 *Join 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️:*\n` +
+            `🔗 https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n\n` +
             `_Star ⭐ the repo to support development!_`;
 
         await sock.sendMessage(m.key.remoteJid, {

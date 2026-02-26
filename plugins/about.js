@@ -45,6 +45,10 @@ export default {
             `📱 wa.me/2547391914\n` +
             `💼 Professional Bot Developer\n\n` +
             `━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            `📢 *Join 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️*\n` +
+            `🔗 https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D\n` +
+            `_Get updates, tips & exclusive content!_\n\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
             `🌐 *GET INVOLVED*\n` +
             `⭐ Star: github.com/Fellix-234/Warrior-Bot/stargazers\n` +
             `🍴 Fork: github.com/Fellix-234/Warrior-Bot/fork\n` +

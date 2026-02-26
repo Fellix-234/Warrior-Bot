@@ -6,7 +6,8 @@ export default {
     category: 'General',
     async execute(sock, m, { botName, prefix, isOwner, isGroup }) {
         const plugins = getPlugins();
-        const channelUrl = 'https://whatsapp.com/channel/your_channel_id';
+        const channelUrl = 'https://whatsapp.com/channel/0029VbC6vR03rZZXWOUdtT1D';
+        const channelName = '𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️';
         let menuText = `╔══════════════════════════╗\n` +
             `║  *${botName.toUpperCase()} — COMMAND HUB*  ║\n` +
             `╚══════════════════════════╝\n\n` +
@@ -14,7 +15,7 @@ export default {
             `Type: *${prefix}menu* or *${prefix}help*\n\n`;
 
         const categories = {
-            'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about', 'info', 'runtime', 'commands', 'support'],
+            'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about', 'info', 'runtime', 'commands', 'support', 'channel'],
             'Download': ['song', 'video', 'play', 'yts', 'tiktok', 'fb', 'ig'],
             'Media': ['photocreate', 'sticker'],
             'Games': ['tictactoe', 'rps', 'dice', 'slots', 'quiz', 'flip', 'guess'],
@@ -67,7 +68,7 @@ export default {
             `🌐 Portfolio: elgringo.netlify.app\n` +
             `📱 WhatsApp: wa.me/${process.env.OWNER_NUMBER?.split('@')[0] || '2547391914'}\n` +
             `💼 Professional Bot Developer\n\n` +
-            `🔗 *Join Our Channel:*\n` +
+            `� *Join 𝗪𝗔𝗥𝗥𝗜𝗢𝗥 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 🛡️:*\n` +
             `${channelUrl}\n\n` +
             `⭐ *Support the Project:*\n` +
             `Star: github.com/Fellix-234/Warrior-Bot/stargazers\n` +
