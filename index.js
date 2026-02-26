@@ -14,6 +14,7 @@ import config from './config.js';
 const logger = pino({ level: 'silent' });
 let sock = null;
 let isRestarting = false;
+let lastPairingAttempt = false;
 
 async function resetSession() {
     if (isRestarting) return;
@@ -50,6 +51,16 @@ async function startBot() {
 
     console.log(`🛡️ WarriorBot v${config.version} starting...`);
     console.log(`Using Baileys v${version.join('.')}${isLatest ? ' (latest)' : ''}`);
+    
+    // Log deployment mode
+    if (config.pairingNumber) {
+        console.log(`\n📱 AUTO-PAIRING MODE ENABLED`);
+        console.log(`📲 Will pair with: ${config.pairingNumber}\n`);
+    } else if (state.creds?.registered) {
+        console.log(`\n✅ REGISTERED MODE - Using existing session\n`);
+    } else {
+        console.log(`\n🎬 FRESH START - QR/Pairing will be generated\n`);
+    }
 
     sock = makeWASocket({
         version,
@@ -77,20 +88,28 @@ async function startBot() {
     sock.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect, qr } = update;
 
-        if (qr) {
+        if (qr && !config.pairingNumber) {
             console.log('QR Code generated. Scan it with your WhatsApp!');
             updateStatus({ qr, connected: false, pairingCode: null });
         }
 
-        // Auto-pairing mode: if PAIRING_NUMBER is set and not registered yet
-        if (!state.creds?.registered && config.pairingNumber && !qr) {
+        // Auto-pairing mode: request pairing code immediately if enabled
+        if (config.pairingNumber && !state.creds?.registered && !lastPairingAttempt) {
+            lastPairingAttempt = true;
             try {
+                console.log(`\n🔗 Requesting pairing code for ${config.pairingNumber}...`);
                 const code = await sock.requestPairingCode(config.pairingNumber.replace(/[^0-9]/g, ''));
-                console.log(`\n🔗 PAIRING CODE: ${code}`);
-                console.log(`Enter this code in WhatsApp: Linked Devices > Link a Device > Link with Phone Number\n`);
+                console.log(`\n✅ PAIRING CODE READY: ${code}`);
+                console.log(`📲 Steps to pair:`);
+                console.log(`   1. Open WhatsApp on your phone`);
+                console.log(`   2. Go to Linked Devices > Link a Device`);
+                console.log(`   3. Select 'Link with Phone Number'`);
+                console.log(`   4. Enter your phone number: ${config.pairingNumber}`);
+                console.log(`   5. When prompted, enter code: ${code}\n`);
                 updateStatus({ pairingCode: code, qr: null, connected: false });
             } catch (err) {
-                console.error('Failed to request pairing code:', err.message);
+                console.error('❌ Failed to request pairing code:', err.message);
+                lastPairingAttempt = false;
             }
         }
 
