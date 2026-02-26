@@ -92,6 +92,40 @@ If deploying to cloud platforms where you can't scan QR codes:
 - 🔵 **Owner Protection**: Secure evaluation and broadcast tools.
 - 🟣 **Privacy Controls**: Command-level access restrictions for owners and groups.
 - 🔴 **Video Note Support**: Professional video notes for alive command (optional).
+- 🟡 **Auto-Reactions**: Custom emoji reactions on command execution.
+- 🟢 **Typing Indicators**: Real-time typing/recording status while processing.
+- 🔵 **Auto-Update System**: Check and install updates via commands.
+- 🟠 **Fancy Text Styles**: Convert text to 8+ different fancy styles.
+- 🟣 **Rotating Images**: Dynamic photo rotation for visual commands.
+- 🔴 **Comprehensive Stats**: Real-time bot and system monitoring.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 🎭 AUTO-REACTIONS & TYPING STATUS
+
+Warrior Bot now features **interactive command feedback**:
+
+#### ⚡ Custom Emoji Reactions
+When you use a command, the bot automatically reacts with random custom emojis:
+- ⚡ Lightning - Fast processing
+- 🔥 Fire - Hot command
+- ✨ Sparkles - Magic happening
+- 🚀 Rocket - Command launched
+- 💫 Dizzy - Processing
+- ⭐ Star - Quality command
+- 🎯 Target - Precision
+- 💎 Gem - Premium feature
+
+After execution:
+- ✅ Success - Command completed
+- ❌ Error - Something went wrong
+
+#### 📝 Typing & Recording Indicators
+The bot shows real-time activity status:
+- **Typing...** - For text-based commands
+- **Recording...** - For media/download commands (song, video, sticker, etc.)
+
+This gives users feedback that the bot is actively processing their request!
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
 
@@ -144,6 +178,30 @@ The bot now supports dynamic photo rotation for commands! Each time you use `.al
    - `about.png`, `about2.png`, `about3.png`
 
 **Note:** You can add as many images as you want! Just name them sequentially (e.g., `alive6.png`, `alive7.png`) and update the arrays in the plugin files. The bot randomly selects one image each time the command is used.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
+
+### 🆕 NEW COMMANDS
+
+#### 🔄 Bot Management (Owner Only)
+- **`.update`** - Check for bot updates from GitHub
+  - `.update check` - Check if updates are available
+  - `.update install` - Install latest updates
+  - `.update changelog` - View recent changes
+- **`.restart`** - Restart the bot (requires process manager)
+
+#### ℹ️ Information Commands
+- **`.info`** - Comprehensive bot information (version, stats, features)
+- **`.stats`** - Detailed system statistics (CPU, RAM, groups)
+- **`.runtime`** - Check how long bot has been running
+- **`.commands`** - Show total commands count by category
+- **`.support`** - Get help and support information
+
+#### 🎨 Fun Commands
+- **`.style <text>`** - Convert text to 8+ fancy styles
+  - Bold, Italic, Script, Double, Monospace
+  - Bubble, Squared, Upside Down
+  - Perfect for bio, status, or stylish messages!
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=30&section=body&gradientColor=FF0000,000000" width="100%"/>
 

@@ -14,15 +14,15 @@ export default {
             `Type: *${prefix}menu* or *${prefix}help*\n\n`;
 
         const categories = {
-            'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about'],
+            'General': ['ping', 'help', 'alive', 'menu', 'owner', 'repo', 'stats', 'about', 'info', 'runtime', 'commands', 'support'],
             'Download': ['song', 'video', 'play', 'yts', 'tiktok', 'fb', 'ig'],
             'Media': ['photocreate', 'sticker'],
             'Games': ['tictactoe', 'rps'],
             'Group': ['groupinfo', 'leave', 'tagall', 'kick', 'add', 'promote', 'demote'],
-            'Utility': ['speed', 'uptime', 'system', 'calc', 'settings', 'weather', 'shorten', 'translate'],
-            'Fun': ['meme', 'pickline', 'truth', 'dare', 'quote', 'joke', 'fact', 'trivia'],
+            'Utility': ['speed', 'uptime', 'system', 'calc', 'settings', 'weather', 'shorten', 'translate', 'style'],
+            'Fun': ['meme', 'pickline', 'truth', 'dare', 'quote', 'joke', 'fact', 'trivia', 'style'],
             'NSFW': ['nsfw'],
-            'Owner': ['eval', 'broadcast'],
+            'Owner': ['eval', 'broadcast', 'update', 'restart'],
             'Greetings': ['hi', 'hello']
         };
 
